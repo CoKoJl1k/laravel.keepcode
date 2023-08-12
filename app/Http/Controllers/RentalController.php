@@ -16,11 +16,11 @@ class RentalController extends Controller
             return response()->json(['error' => 'This product is not available for rental.'], 400);
         }
 
-        $user = auth()->user();
+    //    $user = auth()->user();
         $expiryDate = now()->addHours($request->rental_hours);
 
         $rental = new Rental();
-        $rental->user_id = $user->id;
+        $rental->user_id = $request->user_id;
         $rental->product_id = $product->id;
         $rental->expiry_date = $expiryDate;
         $rental->save();
