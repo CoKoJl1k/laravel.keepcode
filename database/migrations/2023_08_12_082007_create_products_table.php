@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('amount')->default('0');
             $table->double('price',8,2)->default('0.00');
+            $table->integer('is_rentable')->default('1');
             $table->timestamps();
         });
     }

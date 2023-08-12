@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +29,8 @@ class Rental extends Model
 
     public function extendRental($hours)
     {
-        $expiryDate = $this->expiry_date->addHours($hours);
+        $expiry_date = Carbon::create($this->expiry_date);
+        $expiryDate = $expiry_date->addHours($hours);
         $this->update(['expiry_date' => $expiryDate]);
     }
 }
