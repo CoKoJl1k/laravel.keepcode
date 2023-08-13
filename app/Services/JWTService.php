@@ -15,7 +15,7 @@ class JWTService
         $this->secretKey = env('JWT_SECRET');
     }
 
-    public function generateToken(array $payload, int $expiration = 3600): string
+    public function generateToken(array $payload, int $expiration = 36000): string
     {
         $payload['created'] = time();
         $payload['expire'] = time() + $expiration;

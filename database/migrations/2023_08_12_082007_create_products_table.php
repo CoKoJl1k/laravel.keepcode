@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('amount')->default('0');
             $table->double('price',8,2)->default('0.00');
             $table->integer('is_rentable')->default('1');
+            $table->string('status')->default('not available')->comment('not available , available, waiting');
             $table->timestamps();
         });
     }

@@ -30,8 +30,9 @@ Route::controller(AuthController::class)->group(function () {
 
 
 Route::group(['middleware' => FirebaseJwtMiddleware::class], function () {
-    Route::get('/products', [ProductController::class,'index', 'index']);
+    Route::get('/products', [ProductController::class,'index']);
+    Route::post('/products', [ProductController::class,'store']);
     Route::post('/rentals', [RentalController::class, 'rent']);
     Route::post('/rentals/{rental}/extend', [RentalController::class, 'extend']);
-    Route::post('/products', [PurchaseController::class, 'purchase']);
+    Route::post('/purchases', [PurchaseController::class, 'purchase']);
 });

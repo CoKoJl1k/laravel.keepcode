@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\ProductPurchased;
+use App\Listeners\UpdateProductQuantity;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,7 +20,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        ProductPurchased::class=>[
+            UpdateProductQuantity::class
+        ]
+        /*
+        'App\Events\ProductPurchased' => [
+            'App\Listeners\UpdateProductQuantity',
+        ],*/
     ];
+
 
     /**
      * Register any events for your application.

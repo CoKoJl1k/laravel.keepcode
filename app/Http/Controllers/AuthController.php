@@ -26,7 +26,7 @@ class AuthController extends Controller
     {
         $errors = $this->newsService->validateRegister($request);
         if(!empty($errors['message'])) {
-            return response()->json(['status' => 'fail', 'message' => $errors['message']]);
+            return response()->json(['status' => 'fail', 'message' => $errors['message']],400);
         }
         $user = User::create([
             'name' => $request->name,
